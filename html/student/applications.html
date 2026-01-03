@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/student/student.css">
+    <link rel="stylesheet" href="../../css/student/applications.css">
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../../image/Display.png" alt="Eskuelar Logo" class="logo">
+            <h1 class="header-title">Eskuelar Student Portal</h1>
+             <button id="btnLogout" class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <nav class="sub-nav">
+        <button class="nav-btn" onclick="location.href='dashboard.html'">Dashboard</button>
+        <button class="nav-btn" onclick="location.href='student.html'">Scholarships</button>
+        <button class="nav-btn active">Applications</button>
+        <button class="nav-btn">Updates</button>
+        <button class="nav-btn">Release</button>
+        <button class="nav-btn">Messages</button>
+    </nav>
+
+    <main class="content">
+        <div class="search-box">
+            <input type="text" id="appSearch" placeholder="Search application history...">
+        </div>
+        
+        <h2 class="section-label">Submitted Applications</h2>
+
+        <div class="scholarship-grid" id="applicationGrid">
+            </div>
+    </main>
+
+    <script src="../../js/student/applications.js"></script>
+</body>
+</html>
