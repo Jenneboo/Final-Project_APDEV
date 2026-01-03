@@ -1,0 +1,46 @@
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.status-approved { background-color: #28a745; }
+.status-pending { background-color: #f39c12; }
+.status-rejected { background-color: #dc3545; }
+
+.app-message {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.view-link {
+    color: #b30000;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+}
+
+.view-link:hover {
+    color: #800000;
+}
+
+.no-data {
+    grid-column: 1/-1;
+    text-align: center;
+    color: #888;
+    padding: 40px;
+}
+
+.back-link-container {
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
