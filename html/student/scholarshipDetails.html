@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Scholarship Document | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/student/scholarshipDetails.css">
+</head>
+<body>
+
+    <header class="main-header sticky-header no-print">
+        <div class="header-container">
+            <img src="../../image/Display.png" alt="Logo" class="logo">
+            <h1 class="header-title">Official Scholarship Document</h1>
+        </div>
+    </header>
+
+    <div class="document-wrapper">
+        <main class="document-container">
+            
+            <div class="doc-header">
+                <div class="doc-letterhead">
+                    <img src="../../image/Logo.png" alt="Logo" class="doc-logo">
+                    <div class="header-content">
+                        <h2>ESKUELAR SCHOLARSHIP MANAGEMENT SYSTEM</h2>
+                        <p>Office of Student Affairs | Official Program Announcement</p>
+                    </div>
+                </div>
+                <hr class="doc-line">
+            </div>
+
+            <div class="doc-body">
+                <h1 id="view-name" class="program-title">Loading...</h1>
+                
+                <div class="admin-grid">
+                    <div class="grid-item"><strong>Schedule:</strong> <span id="view-schedule"></span></div>
+                    <div class="grid-item"><strong>Time:</strong> <span id="view-time"></span></div>
+                    <div class="grid-item"><strong>Venue:</strong> <span id="view-venue"></span></div>
+                </div>
+
+                <section class="info-block">
+                    <h3 class="section-label">I. PROGRAM DESCRIPTION</h3>
+                    <p id="view-description" class="description-text"></p>
+                </section>
+
+                <section class="info-block">
+                    <h3 class="section-label">II. ELIGIBILITY CRITERIA</h3>
+                    <ul id="view-eligibility" class="bullet-list"></ul>
+                </section>
+
+                <section class="info-block">
+                    <h3 class="section-label">III. APPLICATION REQUIREMENTS</h3>
+                    <ul id="view-requirements" class="bullet-list"></ul>
+                </section>
+            </div>
+
+            <div class="print doc-actions">
+                <button id="applyBtn" class="btn-apply">Apply Now</button>
+                <button onclick="window.print()" class="btn-primary">Print / Save as PDF</button>
+                <a href="student.html" class="btn-secondary">Return to Portal</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/student/scholarshipDetails.js"></script>
+</body>
+</html>
