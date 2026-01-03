@@ -54,5 +54,5 @@ const loadScholarshipDetails = () => {
         }
     }
 };
-asf
+
 document.addEventListener('DOMContentLoaded', loadScholarshipDetails);
