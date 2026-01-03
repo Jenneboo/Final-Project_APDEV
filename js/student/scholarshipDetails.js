@@ -56,3 +56,4 @@ const loadScholarshipDetails = () => {
 };
 
 document.addEventListener('DOMContentLoaded', loadScholarshipDetails);
+

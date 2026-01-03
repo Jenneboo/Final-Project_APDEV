@@ -1,0 +1,79 @@
+
+.document-wrapper {
+    background-color: #f4f6f9;
+    padding: 40px 0;
+    min-height: calc(100vh - 150px);
+}
+
+.document-container {
+    background: white;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 80px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.update-entry {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.update-title {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-left: 6px solid #b30000;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.status-accepted { background-color: #28a745; }
+.status-rejected { background-color: #b30000; }
+
+.update-body {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.doc-logo {
+    height: 80px;
+    width: auto;
+}
+
+.doc-line {
+    border: 0;
+    border-top: 2px solid #333;
+    margin: 20px 0;
+}
+
+.doc-actions {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.btn-secondary {
+    text-decoration: none;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}

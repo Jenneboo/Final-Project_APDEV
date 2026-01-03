@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const successModal = document.getElementById('successModal');
     const closeSuccessBtn = document.getElementById('closeSuccessBtn');
 
+    
     const getLatestScholarships = () => JSON.parse(localStorage.getItem('scholarships')) || [];
     let scholarships = getLatestScholarships();
     let currentItem = scholarships.find(s => s.id == scholarshipId);
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const formData = {
-                appId: Date.now(), // ADDED: Unique ID to view the specific form later
+                appId: Date.now(), 
                 scholarshipId: scholarshipId,
                 scholarshipName: freshItem.name,
                 lastName: document.getElementById('lastName').value,
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 yearLevel: document.getElementById('yearLevel').value,
                 gwa: document.getElementById('gwa').value,
                 appliedDate: new Date().toLocaleDateString(),
-                status: "Pending" // ADDED: Default status
+                status: "Pending" 
             };
 
             scholarships[scholarshipIndex].remainingSlots -= 1;
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('successMessage').textContent = `Your application for ${freshItem.name} has been submitted.`;
                 successModal.style.display = 'flex';
                 
-                // ADDED: Logic for "View in Application" if button exists
+                
                 const viewAppBtn = document.getElementById('viewInAppBtn');
                 if(viewAppBtn) {
                     viewAppBtn.onclick = () => window.location.href = "applications.html";
