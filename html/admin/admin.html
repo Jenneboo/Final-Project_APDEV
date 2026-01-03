@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../../image/Display.png" alt="Logo" class="logo">
+            <h1 class="header-title">Eskuelar Admin Portal</h1>
+            <button id="btnLogout" class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="nav-item active">Scholarships</button>
+        <button class="nav-item" onclick="location.href='viewApplications.html'">Applications</button>
+        <button class="nav-item">Slots</button>
+        <button class="nav-item">Fund Release</button>
+        <button class="nav-item">Inquiries</button>
+        <button class="nav-item">Reports</button>
+    </nav>
+
+    <main class="content-area">
+        <section class="top-bar">
+            <h2>Scholarship Programs</h2>
+            <div class="action-buttons">
+                <button class="btn-add" id="addScholarshipBtn">+ ADD</button>
+                <button class="btn-remove" id="removeScholarshipBtn">- Remove</button>
+            </div>
+        </section>
+
+        <div class="card-list" id="program-list"></div>
+    </main>
+
+    <div id="deleteModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to permanently delete the selected programs?</p>
+            <div class="modal-actions">
+                <button id="confirmDeleteBtn" class="btn-confirm">Delete</button>
+                <button id="cancelDeleteBtn" class="btn-cancel-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="success-icon">✔</div>
+        <h3>Application Submitted!</h3>
+        <p id="successMessage">Your application has been successfully sent.</p>
+        <div class="modal-actions">
+            <button id="closeSuccessBtn" class="btn-confirm">Back to Portal</button>
+        </div>
+    </div>
+</div>
+
+    <script src="../../js/admin/admin.js"></script>
+    
+</body>
+</html>
