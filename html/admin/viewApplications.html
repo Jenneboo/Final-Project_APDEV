@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Applications | Admin</title>
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/admin/viewApplications.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../../image/Display.png" alt="Logo" class="logo">
+            <h1 class="header-title">Eskuelar Admin Portal</h1>
+            <button id="btnLogout" class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="nav-item" onclick="location.href='admin.html'">Scholarships</button>
+        <button class="nav-item active">Applications</button>
+        <button class="nav-item">Slots</button>
+        <button class="nav-item">Fund Release</button>
+        <button class="nav-item">Inquiries</button>
+        <button class="nav-item">Reports</button>
+    </nav>
+
+    <main class="content-area">
+        <h2>Submitted Applications</h2>
+        
+        <table class="app-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Scholarship</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="application-list">
+                <tr>
+                    <td>
+                        <button class="btn-accept" onclick="updateStatus('Accepted')">Accept</button>
+                        <button class="btn-reject" onclick="openRejectModal()">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div id="rejectModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Reject Application</h3>
+            <textarea id="rejectReason" placeholder="Optional: Reason for rejection..."></textarea>
+            <div class="modal-actions">
+                <button class="btn-confirm" onclick="confirmReject()">Confirm Reject</button>
+                <button class="btn-cancel-modal" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/admin/viewApplications.js"></script>
+</body>
+</html>
