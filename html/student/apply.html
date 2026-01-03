@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Application | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/student/apply.css">
+</head>
+<body>
+
+    <div class="apply-wrapper">
+        <main class="apply-container">
+            <header class="apply-header">
+                <img src="../../image/Display.png" alt="Logo" class="form-logo">
+                <h1>Application Form</h1>
+                <h2 id="scholarship-title-display">Scholarship Name</h2>
+            </header>
+
+            <form id="applicationForm">
+                <section class="form-section">
+                    <h3 class="section-label">I. Personal Information</h3>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastName" required placeholder="e.g. Galvez">
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstName" required placeholder="e.g. Desteen Fairy">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Middle Name</label>
+                            <input type="text" id="middleName" placeholder="e.g. Leviste">
+                        </div>
+                        <div class="form-group">
+                            <label>Suffix (Optional)</label>
+                            <input type="text" id="suffix" placeholder="e.g. Jr.">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="tel" id="contact" required placeholder="09XXXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" required placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Home Address</label>
+                        <input type="text" id="address" required placeholder="Street, Barangay, City/Municipality">
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h3 class="section-label">II. Educational Information</h3>
+                    <div class="form-group">
+                        <label>School Name / University</label>
+                        <input type="text" id="school" required placeholder="e.g. University of Antique">
+                    </div>
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>Course / Program</label>
+                            <input type="text" id="course" required placeholder="e.g. BS in Information Technology">
+                        </div>
+                        <div class="form-group">
+                            <label>Year Level</label>
+                            <select id="yearLevel" required>
+                                <option value="">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Current GWA (General Weighted Average)</label>
+                        <input type="number" step="0.01" id="gwa" required placeholder="e.g. 1.25">
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                    <button type="button" class="btn-cancel" onclick="history.back()">Cancel</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="../../js/student/apply.js"></script>
+</body>
+</html>
