@@ -1,0 +1,80 @@
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background-color: #ffffff; }
+.main-header {
+    background: url('../../image/NavBar.png') no-repeat center;
+    background-size: cover;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.logo { height: 70px; width: auto; }
+.header-title { font-size: 24px; color: black; text-align: right; }
+
+.sub-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-btn {
+    background: none; border: none; font-weight: bold;
+    color: #888; cursor: pointer; font-size: 16px;
+}
+.nav-btn.active { color: #b30000; border-bottom: 2px solid #b30000; padding-bottom: 5px; }
+.content { max-width: 1300px; margin: 20px auto; padding: 0 40px; }
+
+.search-box { margin-bottom: 30px; }
+.search-box input {
+    width: 100%;
+    padding: 12px 25px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 15px;
+    outline: none;
+}
+
+.section-label { margin-bottom: 25px; font-weight: bold; color: #000; }
+
+.scholarship-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+}
+
+.scholar-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.scholar-card:hover { transform: translateY(-5px); }
+
+.scholar-card h3 {
+    color: #b30000;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.details p { font-size: 13px; margin-bottom: 6px; color: #444; }
+.status { margin-top: 5px; color: #999; font-size: 12px; }
+.slots { margin-top: 15px; font-size: 14px; color: #444; }
+.slots-available { color: #28a745; font-weight: bold; }
+.slots-empty { color: #dc3545; font-weight: bold; text-transform: uppercase; font-size: 12px; }
