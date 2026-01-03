@@ -1,4 +1,6 @@
+/* viewApplication.css - Clean & Organized */
 
+/* 1. Screen Styles (The Card Look) */
 .apply-wrapper {
     background-color: #f4f4f4;
     padding: 40px 20px;
@@ -40,8 +42,9 @@
     font-size: 18px;
 }
 
+/* 2. Print Styles (The PDF Look) */
 @media print {
-
+    /* Hide the entire button container and other UI elements */
     .form-actions, 
     .btn-cancel, 
     .btn-submit,
@@ -50,6 +53,7 @@
         display: none !important;
     }
 
+    /* Strip Card Styling for a clean document look */
     body { 
         background: white !important; 
     }
@@ -68,6 +72,7 @@
         max-width: none !important;
     }
 
+    /* Professional Text Look for Inputs */
     input[readonly] {
         border: none !important;
         border-bottom: 1px solid #ddd !important;
@@ -76,9 +81,12 @@
         padding-left: 0 !important;
     }
 
+    /* Fix for the section labels background color */
     .section-label {
         background: #eee !important;
+        /* Standard property */
         print-color-adjust: exact;
+        /* Webkit-specific property for Chrome/Safari */
         -webkit-print-color-adjust: exact;
     }
 }
