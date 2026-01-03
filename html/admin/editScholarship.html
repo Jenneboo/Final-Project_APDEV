@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Scholarship | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/admin/editScholarship.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../../image/Logo.png" alt="Logo" class="logo">
+            <h1 class="header-title">Eskuelar Admin Panel</h1>
+        </div>
+    </header>
+
+    <div class="form-wrapper">
+       <main class="form-container">
+        <h2 id="formTitle">Add Scholarship</h2>
+        
+        <form id="scholarshipForm">
+            <div class="form-group">
+                <label for="name">Scholarship Name</label>
+                <input type="text" id="name" placeholder="e.g., TDP - TES" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Scholarship Description</label>
+                <textarea id="description" rows="3" placeholder="General info and grant amount..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="eligibility">Eligibility Criteria</label>
+                <textarea id="eligibility" rows="4" placeholder="e.g., Household income below Php 80,000..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="schedule">Schedule</label>
+                <input type="text" id="schedule" placeholder="e.g., December 2, 2025">
+            </div>
+
+            <div class="form-group">
+                <label for="venue">Venue</label>
+                <input type="text" id="venue" placeholder="e.g., PaghiUsA Hall">
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="text" id="time" placeholder="e.g., 9:00 AM - 4:00 PM">
+            </div>
+
+            <div class="form-group">
+                <label for="requirements">Requirements</label>
+                <textarea id="requirements" rows="5" placeholder="List documents (e.g., School ID, Grades...)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="slots">Total Slots Available</label>
+                <input type="number" id="slots" min="1" placeholder="e.g., 100" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Save Scholarship</button>
+                <a href="admin.html" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </main>
+    </div>
+
+    <script src="../../js/admin/editScholarship.js"></script>
+</body>
+</html>
