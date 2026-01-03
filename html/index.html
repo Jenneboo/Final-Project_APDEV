@@ -27,9 +27,25 @@
                 <h2>Register</h2>
                 <p class="subtitle">Create your student account.</p>
                 <form id="registerForm">
-                    <input type="text" id="regUser" placeholder="Choose Username" required>
-                    <input type="password" id="regPass" placeholder="Create Password" required>
-                    <button type="submit" class="btn-auth">Register</button>
+                    <div id="regStep1">
+                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <input type="text" id="regFirst" placeholder="First Name" required style="flex: 1;">
+                            <input type="text" id="regLast" placeholder="Last Name" required style="flex: 1;">
+                        </div>
+                        <input type="text" id="regCourse" placeholder="Course (e.g., BSIT)" required>
+                        <input type="text" id="regYear" placeholder="Year & Section (e.g., 3-A)" required>
+                        <input type="text" id="regAddress" placeholder="Home Address" required>
+                        <button type="button" id="btnNext" class="btn-auth">Next</button>
+                    </div>
+
+                    <div id="regStep2" style="display: none;">
+                        <input type="text" id="regUser" placeholder="Choose Username" required>
+                        <input type="password" id="regPass" placeholder="Create Password" required>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" id="btnBack" class="btn-auth" style="background: #7f8c8d;">Back</button>
+                            <button type="submit" class="btn-auth">Register Account</button>
+                        </div>
+                    </div>
                 </form>
                 <p class="footer-text">Already have an account? <a href="#" id="showLogin">Login here.</a></p>
             </div>

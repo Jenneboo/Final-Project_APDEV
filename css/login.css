@@ -17,11 +17,10 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-
 .login-logo { 
     display: block;
     width: 100px; 
-    margin: 0 auto 0 auto; 
+    margin: 0 auto 0 auto;
     padding: 0;
 }
 
@@ -48,7 +47,6 @@ h2 {
     text-align: left; 
 }
 
-
 input {
     width: 100%;
     padding: 14px 16px;
@@ -64,10 +62,9 @@ input:focus {
     border-color: #b30000;
 }
 
-
 .btn-auth {
     width: 100%;
-    padding: 14px;
+    padding: 8px;
     background: #b30000;
     color: white;
     border: none;
@@ -77,11 +74,19 @@ input:focus {
     transition: transform 0.1s, background 0.2s;
     font-size: 17px;
     margin-top: 10px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
 }
 
 .btn-auth:hover {
     background: #900000;
     transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -o-transform: translateY(-1px);
 }
 
 .footer-text { 
