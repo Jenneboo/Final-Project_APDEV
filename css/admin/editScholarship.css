@@ -1,0 +1,82 @@
+/* Specific layout to occupy full canvas space */
+.form-wrapper {
+    min-height: calc(100vh - 80px);
+    background-color: #f4f4f4;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    background: transparent; /* Removed card background */
+    width: 100%;
+    max-width: none; /* Occupy full width */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none; /* Removed card shadow */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#scholarshipForm {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 16px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+/* Button container aligned to bottom right */
+.form-actions {
+    margin-top: auto; /* Pushes buttons to bottom */
+    display: flex;
+    justify-content: flex-end; /* Aligns to right */
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.btn-save {
+    background-color: #940606;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: auto; /* No longer full width */
+}
+
+.btn-cancel {
+    background-color: #888;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.btn-save:hover { background-color: #007219; }
+.btn-cancel:hover { background-color: #666; }
