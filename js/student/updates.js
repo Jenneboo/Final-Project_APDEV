@@ -40,16 +40,11 @@ function renderStatusUpdates() {
 }
 
 
-function handleLogout() {
-    const logoutBtn = document.getElementById('btnLogout');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-       
-            window.location.href = "../../index.html"; 
-        });
-    }
-}
-
+const logoutBtn = document.getElementById('btnLogout');
+    logoutBtn?.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        window.location.href = "../index.html";
+    });
 
 document.addEventListener('DOMContentLoaded', () => {
     renderStatusUpdates();

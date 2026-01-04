@@ -123,9 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnLogout")?.addEventListener("click", () => {
         window.location.href = "../index.html";
     });
-<<<<<<< HEAD
-}); 
-=======
-
-})};
->>>>>>> b48f7e1a0597c00f538e050cebfac201739c428e
+});
+const logoutBtn = document.getElementById('btnLogout');
+    logoutBtn?.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        window.location.href = "../index.html";
+    });
