@@ -1,5 +1,4 @@
 
-/* MODAL */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -17,7 +16,6 @@
     border-radius: 6px;
 }
 
-/* BUTTONS */
 .app-table .btn-view {
     background: #b30000;
     color: #fff;
@@ -53,7 +51,6 @@
     border-radius: 4px;
 }
 
-/* EMPTY */
 .no-data {
     text-align: center;
     color: #888;
