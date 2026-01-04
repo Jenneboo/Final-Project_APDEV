@@ -1,12 +1,63 @@
-<section class="admin-card">
-  <h3>Release Scholarship Funds</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fund Release | Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/admin/viewApplications.css">
+    <link rel="stylesheet" href="../../css/admin/fundRelease.css">
+</head>
+<body>
 
-  <select id="releaseScholarship">
-    <option value="">Select Scholarship</option>
-    <option value="Eskuelar Merit Scholarship">Eskuelar Merit Scholarship</option>
-  </select>
+<header class="main-header">
+    <div class="header-container">
+        <img src="../../image/Display.png" class="logo">
+        <h1 class="header-title">Eskuelar Admin Portal</h1>
+        <button id="btnLogout" class="btn-logout">Logout</button>
+    </div>
+</header>
 
-  <textarea id="releaseMessage" placeholder="Enter fund release announcement"></textarea>
+<nav class="tab-nav">
+        <button class="nav-item" onclick="location.href='admin.html'">Scholarships</button>
+         <button class="nav-item" onclick="location.href='viewApplications.html'">Applications</button>
+        <button class="nav-item">Slots</button>
+        <button class="nav-item active">Fund Release</button>
+        <button class="nav-item">Messages</button>
+    </nav>
 
-  <button onclick="releaseFunds()">Release Funds</button>
-</section>
+<main class="content-area">
+    <h2>Fund Release</h2>
+
+    <table class="app-table">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Scholarship</th>
+                <th>Date Approved</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="fund-release-list"></tbody>
+    </table>
+</main>
+
+
+<div id="releaseModal" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Release Fund</h3>
+
+        <p>Confirm fund release?</p>
+
+        <textarea id="releaseNote" placeholder="Optional note"></textarea>
+
+        <div class="modal-actions">
+            <button class="btn-confirm" onclick="confirmRelease()">Confirm</button>
+            <button class="btn-cancel-modal" onclick="closeReleaseModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/admin/fundRelease.js"></script>
+</body>
+</html>

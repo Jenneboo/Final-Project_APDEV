@@ -1,33 +1,90 @@
-window.releaseFund = function(appId) {
-    let allApplications = JSON.parse(localStorage.getItem('applications')) || [];
-    let fundReleases = JSON.parse(localStorage.getItem('fundReleases')) || [];
+"use strict";
 
-    const index = allApplications.findIndex(app => app.appId === appId);
+const listContainer = document.getElementById("fund-release-list");
+const releaseModal = document.getElementById("releaseModal");
+let currentAppId = null;
 
-    if (index === -1) return;
+function renderFundReleaseList() {
+    const apps = JSON.parse(localStorage.getItem("applications")) || [];
+    listContainer.innerHTML = "";
 
-    const app = allApplications[index];
+    const accepted = apps.filter(app =>
+        app.status === "Accepted" && app.fundStatus !== "Released"
+    );
 
-    if (app.status === "Fund Released") {
-        alert("Funds already released for this student.");
+    if (accepted.length === 0) {
+        listContainer.innerHTML = `
+            <tr>
+                <td colspan="4" class="no-data">
+                    No funds pending for release.
+                </td>
+            </tr>`;
         return;
     }
 
-    app.status = "Fund Released";
-    app.fundReleasedDate = new Date().toLocaleDateString();
-
-    fundReleases.push({
-        releaseId: "FR-" + Date.now(),
-        appId: app.appId,
-        studentEmail: app.email,
-        scholarshipName: app.scholarshipName,
-        message: "Your scholarship funds have been released. Please coordinate with the finance office.",
-        date: app.fundReleasedDate
+    accepted.forEach(app => {
+        listContainer.innerHTML += `
+            <tr>
+                <td>${app.firstName} ${app.lastName}</td>
+                <td>${app.scholarshipName}</td>
+                <td>${app.appliedDate}</td>
+                <td>
+                    <button class="btn-view" onclick="viewDetails(${app.appId})">
+                        View
+                    </button>
+                    <button class="btn-release" onclick="openReleaseModal(${app.appId})">
+                        Release
+                    </button>
+                </td>
+            </tr>`;
     });
+}
 
-    localStorage.setItem('applications', JSON.stringify(allApplications));
-    localStorage.setItem('fundReleases', JSON.stringify(fundReleases));
+window.viewDetails = function (id) {
+    const apps = JSON.parse(localStorage.getItem("applications")) || [];
+    const app = apps.find(a => a.appId === id);
 
-    alert(`Funds successfully released for ${app.firstName} ${app.lastName}`);
-    renderApplications();
+    if (!app) return;
+
+    alert(`
+Name: ${app.firstName} ${app.lastName}
+Scholarship: ${app.scholarshipName}
+Amount: ₱${app.fundAmount || "N/A"}
+Status: ${app.status}
+    `);
 };
+
+window.openReleaseModal = function (id) {
+    currentAppId = id;
+    releaseModal.style.display = "flex";
+};
+
+window.closeReleaseModal = function () {
+    releaseModal.style.display = "none";
+    document.getElementById("releaseNote").value = "";
+};
+
+window.confirmRelease = function () {
+    const note = document.getElementById("releaseNote").value;
+    const apps = JSON.parse(localStorage.getItem("applications")) || [];
+
+    const index = apps.findIndex(a => a.appId === currentAppId);
+    if (index === -1) return;
+
+    apps[index].fundStatus = "Released";
+    apps[index].releasedDate = new Date().toLocaleDateString();
+    apps[index].releaseNote = note;
+
+    localStorage.setItem("applications", JSON.stringify(apps));
+
+    closeReleaseModal();
+    renderFundReleaseList();
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderFundReleaseList();
+
+    document.getElementById("btnLogout")?.addEventListener("click", () => {
+        window.location.href = "../index.html";
+    });
+});
