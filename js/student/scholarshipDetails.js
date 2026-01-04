@@ -3,7 +3,9 @@
 const loadScholarshipDetails = () => {
     const params = new URLSearchParams(window.location.search);
     const scholarshipId = params.get('id');
+    const currentUser = localStorage.getItem('currentUser'); //For specific user ja 
     const applyBtn = document.getElementById('applyBtn');
+    
     if (!scholarshipId) return;
 
     const data = JSON.parse(localStorage.getItem('scholarships')) || [];
@@ -35,7 +37,10 @@ const loadScholarshipDetails = () => {
 
         if (applyBtn) {
             const allApplications = JSON.parse(localStorage.getItem('applications')) || [];
-            const hasAlreadyApplied = allApplications.some(app => app.scholarshipId == scholarshipId);
+            
+            const hasAlreadyApplied = allApplications.some(app => 
+                app.scholarshipId == scholarshipId && app.username === currentUser
+            );
 
             if (hasAlreadyApplied) {
                 applyBtn.textContent = "Already Applied";
@@ -54,5 +59,5 @@ const loadScholarshipDetails = () => {
         }
     }
 };
-asf
+
 document.addEventListener('DOMContentLoaded', loadScholarshipDetails);

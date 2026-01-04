@@ -1,117 +1,46 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-body { background-color: #f4f4f4; padding: 40px 20px; }
-
-.apply-wrapper { max-width: 800px; margin: 0 auto; }
-
-.apply-container {
-    background: white;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.apply-header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #333; padding-bottom: 20px; }
-.form-logo { height: 80px; margin-bottom: 10px; }
-.apply-header h1 { font-size: 22px; color: #333; text-transform: uppercase; letter-spacing: 1px; }
-.apply-header h2 { color: #b30000; font-size: 28px; margin-top: 5px; }
-
-.section-label {
-    background: #f0f0f0;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-left: 5px solid #b30000;
-    margin: 25px 0 15px 0;
-}
-
-.form-group { margin-bottom: 20px; flex: 1; }
-.form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: #444; font-size: 14px; }
-
-.form-group input, 
-.form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
-    background-color: #fff; 
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #b30000;
-}
-
-.input-row { display: flex; gap: 20px; }
-
-@media (max-width: 600px) {
-    .input-row { flex-direction: column; gap: 0; }
-    .apply-container { padding: 25px; }
-}
-
-.form-actions { margin-top: 40px; display: flex; gap: 15px; justify-content: center; }
-
-.btn-submit { background: #b30000; color: white; border: none; padding: 15px 40px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-submit:hover { background: #8e0000; }
-
-.btn-cancel { background: #fff; color: #555; border: 1px solid #ccc; padding: 15px 40px; border-radius: 5px; cursor: pointer; }
-
-/* Custom Success Modal Styling */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
-    max-width: 450px;
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.success-icon {
-    font-size: 50px;
-    color: #28a745;
-    margin-bottom: 20px;
-}
-
-.modal-content h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 24px;
-}
-
-.modal-content p {
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: center;
-}
-
-.modal-content .btn-confirm {
-    background: #b30000;
-    color: white;
-    border: none;
-    padding: 12px 40px;
-    border-radius: 5px;
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
     font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    color: white;
+    margin-bottom: 12px;
 }
 
-.modal-content .btn-confirm:hover {
-    background: #8e0000;
+.status-approved { background-color: #28a745; }
+.status-pending { background-color: #f39c12; }
+.status-rejected { background-color: #dc3545; }
+
+.app-message {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.view-link {
+    color: #b30000;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+}
+
+.view-link:hover {
+    color: #800000;
+}
+
+.no-data {
+    grid-column: 1/-1;
+    text-align: center;
+    color: #888;
+    padding: 40px;
+}
+
+.back-link-container {
+    margin-top: 30px;
+    padding-bottom: 50px;
 }

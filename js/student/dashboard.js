@@ -4,27 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const user = localStorage.getItem('currentUser') || "student";
     const profileKey = `profile_${user}`;
     
+    const scholarshipGrid = document.getElementById('scholarship-grid');
+    const statsTotal = document.getElementById('stat-total');
 
-    const sideUser = document.getElementById('display-username');
-    const sideName = document.getElementById('display-name');
-    const profileDisplay = document.getElementById('profileDisplay');
-
-    const loadData = () => {
+    const loadProfile = () => {
         const data = JSON.parse(localStorage.getItem(profileKey)) || {};
-        sideUser.textContent = `@${user}`;
-        
-        if (data.firstName) {
-            sideName.textContent = `${data.firstName} ${data.lastName}`;
-            document.getElementById('p-firstName').value = data.firstName;
-            document.getElementById('p-lastName').value = data.lastName;
-            document.getElementById('p-course').value = data.course || "";
-            document.getElementById('display-course').textContent = data.course || "Not Set";
-            document.getElementById('display-year').textContent = data.year || "Not Set";
-        }
-        if (data.photo) profileDisplay.src = data.photo;
+        ['firstName', 'lastName', 'course', 'year', 'address'].forEach(id => {
+            const el = document.getElementById(`p-${id}`);
+            if (el) el.value = data[id] || "";
+        });
     };
 
-  
     document.getElementById('profileForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const profileData = {
@@ -32,33 +22,49 @@ document.addEventListener('DOMContentLoaded', () => {
             lastName: document.getElementById('p-lastName').value,
             course: document.getElementById('p-course').value,
             year: document.getElementById('p-year').value,
-            photo: profileDisplay.src
+            address: document.getElementById('p-address').value
         };
         localStorage.setItem(profileKey, JSON.stringify(profileData));
-        alert("Profile Updated!");
-        loadData();
+        alert("Profile updated successfully!");
     });
 
-  
-    document.getElementById('p-upload')?.addEventListener('change', function() {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            profileDisplay.src = e.target.result;
-        };
-        reader.readAsDataURL(this.files[0]);
-    });
+    const renderScholarships = () => {
+        const scholarships = JSON.parse(localStorage.getItem('scholarships')) || [];
+        const available = scholarships.filter(s => s.status === "Available");
 
+        const countEl = document.getElementById('available-count');
+        if (countEl) countEl.textContent = `${available.length} programs found`;
+        
+        if (!scholarshipGrid) return;
 
-    document.getElementById('btnLogout')?.addEventListener('click', () => {
+        scholarshipGrid.innerHTML = available.length ? "" : "<p class='no-data'>No scholarships available.</p>";
+
+        available.forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'mini-scholarship-card';
+            card.innerHTML = `
+                <div class="card-details">
+                    <h4>${s.name}</h4>
+                    <span>${s.remainingSlots} slots remaining</span>
+                </div>
+            `;
+            scholarshipGrid.appendChild(card);
+        });
+    };
+
+    const allApps = JSON.parse(localStorage.getItem('applications')) || [];
+    if (statsTotal) {
+        const count = allApps.filter(a => a.username === user).length;
+        statsTotal.textContent = count;
+    }
+
+   const logoutBtn = document.getElementById('btnLogout');
+    logoutBtn?.addEventListener('click', () => {
         localStorage.removeItem('currentUser');
-        window.location.href = "../../index.html";
+        window.location.href = "../index.html";
+
     });
 
-    loadData();
+    loadProfile();
+    renderScholarships();
 });
-
-
-window.toggleDetails = (id) => {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === 'block' ? 'none' : 'block';
-};
