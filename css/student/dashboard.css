@@ -155,3 +155,51 @@
     color: #7f8c8d;
     font-style: italic;
 }
+
+.info-display .display-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f8f9fa;
+    padding-bottom: 5px;
+}
+
+.info-display label {
+    display: block;
+    font-size: 0.8rem;
+    color: #a0aec0;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.info-display p {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin: 0;
+    font-weight: 500;
+}
+
+.btn-edit-toggle {
+    background: white;
+    border: 1px solid #cbd5e0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-edit-toggle:hover {
+    background: #edf2f7;
+}
+
+.btn-cancel {
+    width: 100%;
+    padding: 12px;
+    background: #edf2f7;
+    color: #4a5568;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}

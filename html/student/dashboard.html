@@ -26,58 +26,83 @@
         <button class="nav-btn">Messages</button>
     </nav>
 
-  <div class="dashboard-wrapper">
-    <div class="dashboard-grid">
-        
-        <div class="glass-card">
-            <h3>Information Sheet</h3>
-            <form id="profileForm" class="info-form">
-                <div class="input-row">
-                    <div class="field">
-                        <label>First Name</label>
-                        <input type="text" id="p-firstName" placeholder="First Name">
-                    </div>
-                    <div class="field">
-                        <label>Last Name</label>
-                        <input type="text" id="p-lastName" placeholder="Last Name">
-                    </div>
-                </div>
-                <div class="field">
-                    <label>Course</label>
-                    <input type="text" id="p-course" placeholder="e.g. BS in Information Technology">
-                </div>
-                <div class="field">
-                    <label>Year & Section</label>
-                    <input type="text" id="p-year" placeholder="e.g. 3-A">
-                </div>
-                <div class="field">
-                    <label>Home Address</label>
-                    <input type="text" id="p-address" placeholder="Street, City, Province">
-                </div>
-                <button type="submit" class="btn-save">Update Information</button>
-            </form>
-        </div>
-
-        <div class="content-side">
-            <div class="stat-banner">
-                <div class="stat-item">
-                    <span>My Applications</span>
-                    <h2 id="stat-total">0</h2>
-                </div>
-            </div>
+    <div class="dashboard-wrapper">
+        <div class="dashboard-grid">
             
-            <div class="scholarship-section">
+            <div class="glass-card">
                 <div class="section-header">
-                    <h3>Available Scholarships</h3>
-                    <small id="available-count">0 programs found</small>
+                    <h3>Information Sheet</h3>
+                    <button id="btnEditProfile" class="btn-edit-toggle">Edit Information</button>
                 </div>
-                <div id="scholarship-grid" class="scholarship-grid">
-                    </div>
-            </div>
-        </div>
 
+                <div id="profileDisplay" class="info-display">
+                    <div class="display-group">
+                        <label>Full Name</label>
+                        <p id="d-name">Loading...</p>
+                    </div>
+                    <div class="display-group">
+                        <label>Course</label>
+                        <p id="d-course">Loading...</p>
+                    </div>
+                    <div class="display-group">
+                        <label>Year & Section</label>
+                        <p id="d-year">Loading...</p>
+                    </div>
+                    <div class="display-group">
+                        <label>Home Address</label>
+                        <p id="d-address">Loading...</p>
+                    </div>
+                </div>
+
+                <form id="profileForm" class="info-form" style="display: none;">
+                    <div class="input-row">
+                        <div class="field">
+                            <label>First Name</label>
+                            <input type="text" id="p-firstName">
+                        </div>
+                        <div class="field">
+                            <label>Last Name</label>
+                            <input type="text" id="p-lastName">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Course</label>
+                        <input type="text" id="p-course">
+                    </div>
+                    <div class="field">
+                        <label>Year & Section</label>
+                        <input type="text" id="p-year">
+                    </div>
+                    <div class="field">
+                        <label>Home Address</label>
+                        <input type="text" id="p-address">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn-save">Update Information</button>
+                        <button type="button" id="btnCancel" class="btn-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="content-side">
+                <div class="stat-banner">
+                    <div class="stat-item">
+                        <span>My Applications</span>
+                        <h2 id="stat-total">0</h2>
+                    </div>
+                </div>
+                
+                <div class="scholarship-section">
+                    <div class="section-header">
+                        <h3>Available Scholarships</h3>
+                        <small id="available-count">0 programs found</small>
+                    </div>
+                    <div id="scholarship-grid" class="scholarship-grid"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 
     <script src="../../js/student/dashboard.js"></script>
 </body>
