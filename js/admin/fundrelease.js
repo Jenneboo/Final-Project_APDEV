@@ -8,17 +8,14 @@ window.releaseFund = function(appId) {
 
     const app = allApplications[index];
 
-    // Prevent double release
     if (app.status === "Fund Released") {
         alert("Funds already released for this student.");
         return;
     }
 
-    // Update application status
     app.status = "Fund Released";
     app.fundReleasedDate = new Date().toLocaleDateString();
 
-    // Create release announcement
     fundReleases.push({
         releaseId: "FR-" + Date.now(),
         appId: app.appId,
