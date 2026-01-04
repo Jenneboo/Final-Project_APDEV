@@ -14,25 +14,29 @@ function renderApplications() {
         return;
     }
 
-    allApplications.forEach(app => {
+    if (app.status === "Pending" || app.status === "Accepted") {
+    const row = `
+        <tr>
+            <td>${app.firstName} ${app.lastName}</td>
+            <td>${app.scholarshipName}</td>
+            <td>${app.appliedDate}</td>
+            <td>
+                <button class="btn-view" onclick="viewStudentForm(${app.appId})">View Form</button>
 
-        if (app.status === "Pending") {
-            const row = `
-                <tr>
-                    <td>${app.firstName} ${app.lastName}</td>
-                    <td>${app.scholarshipName}</td>
-                    <td>${app.appliedDate}</td>
-                    <td>
-                        <button class="btn-view" onclick="viewStudentForm(${app.appId})">View Form</button>
-                        <button class="btn-accept" onclick="updateStatus(${app.appId}, 'Accepted')">Accept</button>
-                        <button class="btn-reject" onclick="openRejectModal(${app.appId})">Reject</button>
-                    </td>
-                </tr>
-            `;
-            listContainer.insertAdjacentHTML('beforeend', row);
-        }
-    });
+                ${app.status === "Pending" ? `
+                    <button class="btn-accept" onclick="updateStatus(${app.appId}, 'Accepted')">Accept</button>
+                    <button class="btn-reject" onclick="openRejectModal(${app.appId})">Reject</button>
+                ` : ""}
+
+                ${app.status === "Accepted" ? `
+                    <button class="btn-release" onclick="releaseFund(${app.appId})">Release Fund</button>
+                ` : ""}
+            </td>
+        </tr>
+    `;
+    listContainer.insertAdjacentHTML('beforeend', row);
 }
+
 
 
 window.viewStudentForm = function(appId) {
@@ -95,4 +99,5 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutBtn?.addEventListener('click', () => {
         window.location.href = "../index.html";
     });
+
 });
