@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Portal | Eskuelar</title>
-        <link rel="stylesheet" href="../../css/admin/admin.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | Eskuelar</title>
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/admin/viewApplications.css">
+</head>
+<body>
 
-        <header class="main-header">
-            <div class="header-container">
-                <img src="../../image/Display.png" alt="Logo" class="logo">
-                <h1 class="header-title">Eskuelar Admin Portal</h1>
-                <button id="btnLogout" class="btn-logout">Logout</button>
-            </div>
-        </header>
+    <header class="main-header">
+    <div class="header-container">
+        <img src="../../image/Display.png" alt="Logo" class="logo">
+        <h1 class="header-title">Eskuelar Admin Portal</h1>
+        <button id="btnLogout" class="btn-logout">Logout</button>
+    </div>
+</header>
 
-        <nav class="tab-nav">
-            <button class="nav-item" onclick="location.href='admin.html'">Scholarships</button>
-            <button class="nav-item" onclick="location.href='viewApplications.html'">Applications</button>
-            <button class="nav-item active">Slots</button>
-            <button class="nav-item" onclick="location.href='fundrelease.html'">Fund Release</button>
-            <button class="nav-item" onclick="location.href='messages.html'">Messages</button>
-        </nav>
+    <nav class="tab-nav">
+        <button class="nav-item" onclick="location.href='admin.html'">Scholarships</button>
+        <button class="nav-item" onclick="location.href='viewApplications.html'">Applications</button>
+        <button class="nav-item active">Slots</button>
+        <button class="nav-item" onclick="location.href='fundrelease.html'">Fund Release</button>
+        <button class="nav-item" onclick="location.href='messages.html'">Messages</button>
+    </nav>
+<main class="content-area">
+    <section class="slot-summary">
+        <div class="summary-card">
+            <h3>Total Scholarships</h3>
+            <p id="total-scholarships">0</p>
+        </div>
+        <div class="summary-card">
+            <h3>Total Remaining Slots</h3>
+            <p id="total-slots">0</p>
+        </div>
+    </section>
 
-         <script src="../../js/admin/slot.js"></script>
-    </body>
+    <section class="table-container">
+        <h2 class="section-title">Live Slot Monitoring</h2>
+        <table class="app-table">
+            <thead>
+                <tr>
+                    <th>Scholarship Name</th>
+                    <th style="width: 15%;">Capacity</th>
+                    <th style="width: 35%;">Availability</th> 
+                    <th style="width: 15%;">Status</th>
+                </tr>
+            </thead>
+            <tbody id="slot-table-body">
+                </tbody>
+        </table>
+    </section>
+</main>
+    
+    <script src="../../js/admin/slot.js"></script>
+</body>
 </html>
