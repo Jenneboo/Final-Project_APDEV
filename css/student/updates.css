@@ -1,4 +1,4 @@
-
+/* Document Layout */
 .document-wrapper {
     background-color: #f4f6f9;
     padding: 40px 0;
@@ -7,73 +7,97 @@
 
 .document-container {
     background: white;
-    width: 90%;
+    width: 95%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 50px 80px;
+    padding: 50px 60px; /* Adjusted for better mobile/tablet view */
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     font-family: 'Times New Roman', Times, serif;
 }
 
-
+/* Update Card (The Box) */
 .update-entry {
     margin-top: 30px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
+    border-radius: 8px; /* Slightly rounder for modern look */
+    background-color: #fff;
+    position: relative;
+    padding: 25px; /* Adds the "room" you asked for */
+    font-family: Arial, sans-serif; /* Keep body text readable */
 }
 
+/* Title & Status Pill Logic */
 .update-title {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    padding: 12px 20px;
-    font-size: 18px;
-    border-left: 6px solid #b30000;
-    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
+/* Status Badge - Fixed to be the Pill style in top right */
 .status-badge {
     font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 4px;
-    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: bold;
     text-transform: uppercase;
+    border: 1px solid currentColor; /* Matches the text color */
 }
 
-.status-accepted { background-color: #28a745; }
-.status-rejected { background-color: #b30000; }
+.status-accepted { 
+    color: #28a745; 
+    background-color: #e6fffa; 
+}
 
+.status-rejected { 
+    color: #c0392b; 
+    background-color: #fff5f5; 
+}
+
+/* Body Spacing */
 .update-body {
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    padding: 10px 0;
     line-height: 1.6;
-    color: #333;
+    color: #444;
 }
 
-.doc-logo {
-    height: 80px;
-    width: auto;
+.update-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 10px;
 }
 
-.doc-line {
-    border: 0;
-    border-top: 2px solid #333;
-    margin: 20px 0;
+/* Your Requested Red Button */
+.btn-view-submission {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #c0392b; /* The specific red you asked for */
+    color: white !important;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-.doc-actions {
-    margin-top: 50px;
-    text-align: center;
+.btn-view-submission:hover {
+    background-color: #a93226;
+    transform: translateY(-1px);
 }
 
+/* Header/Letterhead Styles (Keeping your original) */
+.doc-logo { height: 80px; width: auto; }
+.doc-line { border: 0; border-top: 2px solid #333; margin: 20px 0; }
+.doc-actions { margin-top: 50px; text-align: center; }
 .btn-secondary {
     text-decoration: none;
     color: #666;
     border: 1px solid #ddd;
     padding: 10px 20px;
     border-radius: 4px;
-    font-family: Arial, sans-serif;
 }
