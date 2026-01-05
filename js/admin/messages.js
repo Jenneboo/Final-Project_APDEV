@@ -11,6 +11,14 @@ if (!currentUser) {
 const getMessages = () => JSON.parse(localStorage.getItem(MESSAGES_KEY)) || [];
 const saveMessages = (arr) => localStorage.setItem(MESSAGES_KEY, JSON.stringify(arr));
 
+// check whether a username is registered in the system
+const isRegistered = (name) => {
+    if (!name) return false;
+    if (name === 'admin') return true;
+    const students = JSON.parse(localStorage.getItem('eskuela_students')) || [];
+    return students.some(s => s.username === name);
+};
+
 const isVisible = (m, user) => !(m.hiddenFor && Array.isArray(m.hiddenFor) && m.hiddenFor.includes(user));
 
 const el = (id) => document.getElementById(id);
@@ -107,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const to = el('toInput').value.trim();
         const text = el('messageInput').value.trim();
         if (!to || !text) return alert('Please enter recipient and message');
+        if (!isRegistered(to)) return alert('Recipient is not registered in the system');
         const messages = getMessages();
         messages.push({ id: Date.now(), from: currentUser, to, text, ts: Date.now(), read: false, hiddenFor: [] });
         saveMessages(messages);
@@ -116,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     el('sendReplyBtn')?.addEventListener('click', () => {
         if (!currentPartner) return alert('Select a conversation first');
+        if (!isRegistered(currentPartner)) return alert('Recipient is not registered in the system');
         const text = el('replyInput').value.trim(); if (!text) return;
         const messages = getMessages();
         messages.push({ id: Date.now(), from: currentUser, to: currentPartner, text, ts: Date.now(), read: false, hiddenFor: [] });

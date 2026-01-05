@@ -25,10 +25,13 @@ const renderConvList = () => {
     const messages = getMessages();
     const partners = new Set();
     messages.forEach(m => {
-        if (!isVisible(m, currentUser)) return; // skip messages hidden for this user
+        if (!isVisible(m, currentUser)) return; 
         if (m.from === currentUser && m.to !== currentUser) partners.add(m.to);
         if (m.to === currentUser && m.from !== currentUser) partners.add(m.from);
     });
+
+    
+    partners.add('admin');
 
     if (partners.size === 0) { if (noConv) noConv.style.display = 'block'; return; }
     if (noConv) noConv.style.display = 'none';
