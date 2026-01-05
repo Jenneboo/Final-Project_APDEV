@@ -4,10 +4,15 @@
     max-width: 1000px;
     margin: 30px auto; 
     padding: 0 20px; 
+    align-items: flex-start; /* keep panels from stretching to match heights */
 }
 
 .student-list-panel { 
     width: 280px; 
+    flex: 0 0 280px; /* fixed width */
+    align-self: flex-start; /* don't stretch vertically */
+    max-height: 600px; /* fixed max height so it doesn't expand when conversation grows */
+    overflow: auto; /* scroll student list independently */
     background: #fff; 
     border: 2px solid #b30000; 
     border-radius: 8px; 
@@ -52,6 +57,16 @@
     margin-left:8px;
 }
 
+.nav-badge {
+    background:#b30000;
+    color:#fff;
+    padding:2px 6px;
+    border-radius:12px;
+    font-size:12px;
+    margin-left:8px;
+    vertical-align:middle;
+}
+
 .student-item:hover { 
     background:#f3f3f3; 
     border-color:#eee; 
@@ -71,6 +86,7 @@
     display:flex; 
     flex-direction:column; 
     overflow:hidden; 
+    max-height:600px; 
 }
 
 .conversation-header { 
@@ -165,6 +181,7 @@
 }
 
 @media (max-width:800px) {
-    .messages-area { flex-direction:column; }
-    .student-list-panel { width:100%; }
+    .messages-area { flex-direction:column; align-items: stretch; }
+    .student-list-panel { width:100%; max-height:none; }
+    .conversation-panel { max-height:none; }
 }

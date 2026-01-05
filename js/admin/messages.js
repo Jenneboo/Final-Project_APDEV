@@ -11,6 +11,8 @@ if (!currentUser) {
 const getMessages = () => JSON.parse(localStorage.getItem(MESSAGES_KEY)) || [];
 const saveMessages = (arr) => localStorage.setItem(MESSAGES_KEY, JSON.stringify(arr));
 
+const isVisible = (m, user) => !(m.hiddenFor && Array.isArray(m.hiddenFor) && m.hiddenFor.includes(user));
+
 const el = (id) => document.getElementById(id);
 let currentPartner = null;
 
@@ -23,6 +25,7 @@ const renderConvList = () => {
     const messages = getMessages();
     const partners = new Set();
     messages.forEach(m => {
+        if (!isVisible(m, currentUser)) return; // skip messages hidden for this user
         if (m.from === currentUser && m.to !== currentUser) partners.add(m.to);
         if (m.to === currentUser && m.from !== currentUser) partners.add(m.from);
     });
@@ -37,7 +40,7 @@ const renderConvList = () => {
         spanName.textContent = name;
         li.appendChild(spanName);
         // unread count for messages from this partner to currentUser
-        const unread = getMessages().filter(m => m.from === name && m.to === currentUser && !m.read).length;
+        const unread = getMessages().filter(m => isVisible(m, currentUser) && m.from === name && m.to === currentUser && !m.read).length;
         if (unread > 0) {
             const badge = document.createElement('span');
             badge.className = 'unread-badge';
@@ -68,17 +71,18 @@ const openConversation = (partner) => {
     if (header) header.textContent = `${partner}`;
     if (!body) return;
     body.innerHTML = '';
-    const messages = getMessages().filter(m => (m.from === partner && m.to === currentUser) || (m.from === currentUser && m.to === partner));
+    const messages = getMessages().filter(m => isVisible(m, currentUser) && ((m.from === partner && m.to === currentUser) || (m.from === currentUser && m.to === partner)));
     messages.sort((a,b)=>a.ts - b.ts).forEach(m => {
         const msgEl = document.createElement('div');
         msgEl.className = m.from === currentUser ? 'msg admin' : 'msg student';
         msgEl.textContent = m.text;
         body.appendChild(msgEl);
     });
-    // mark inbound messages as read for this conversation
+  
     const all = getMessages();
     let changed = false;
     all.forEach(m => {
+        if (!isVisible(m, currentUser)) return;
         if (m.from === partner && m.to === currentUser && !m.read) { m.read = true; changed = true; }
     });
     if (changed) saveMessages(all);
@@ -104,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = el('messageInput').value.trim();
         if (!to || !text) return alert('Please enter recipient and message');
         const messages = getMessages();
-        messages.push({ id: Date.now(), from: currentUser, to, text, ts: Date.now(), read: false });
+        messages.push({ id: Date.now(), from: currentUser, to, text, ts: Date.now(), read: false, hiddenFor: [] });
         saveMessages(messages);
         el('newMessageModal').style.display = 'none'; el('toInput').value = ''; el('messageInput').value = '';
         renderConvList(); openConversation(to);
@@ -114,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentPartner) return alert('Select a conversation first');
         const text = el('replyInput').value.trim(); if (!text) return;
         const messages = getMessages();
-        messages.push({ id: Date.now(), from: currentUser, to: currentPartner, text, ts: Date.now(), read: false });
+        messages.push({ id: Date.now(), from: currentUser, to: currentPartner, text, ts: Date.now(), read: false, hiddenFor: [] });
         saveMessages(messages);
         el('replyInput').value = '';
         renderConvList(); openConversation(currentPartner);
@@ -122,9 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     el('deleteConvBtn')?.addEventListener('click', () => {
         if (!currentPartner) return alert('No conversation selected');
-        if (!confirm(`Delete conversation with ${currentPartner}? This cannot be undone.`)) return;
-        const remaining = getMessages().filter(m => !((m.from === currentPartner && m.to === currentUser) || (m.from === currentUser && m.to === currentPartner)));
-        saveMessages(remaining);
+        if (!confirm(`Delete conversation for YOU with ${currentPartner}? This will only hide messages in your view.`)) return;
+        const all = getMessages();
+        let changed = false;
+        all.forEach(m => {
+            if ((m.from === currentPartner && m.to === currentUser) || (m.from === currentUser && m.to === currentPartner)) {
+                if (!m.hiddenFor) m.hiddenFor = [];
+                if (!m.hiddenFor.includes(currentUser)) { m.hiddenFor.push(currentUser); changed = true; }
+            }
+        });
+        if (changed) saveMessages(all);
         currentPartner = null;
         el('conversationHeader').textContent = 'Select a conversation';
         el('conversationBody').innerHTML = '';
