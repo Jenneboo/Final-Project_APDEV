@@ -52,7 +52,7 @@ function renderApplications() {
     });
 }
 
-/* VIEW FORM */
+
 window.viewStudentForm = function (appId) {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const student = apps.find(a => a.appId === appId);
@@ -70,21 +70,40 @@ CONTACT: ${student.contact || "N/A"}
     `);
 };
 
-/* UPDATE STATUS */
+
 window.updateStatus = function (appId, newStatus, message = "") {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const index = apps.findIndex(app => app.appId === appId);
 
     if (index !== -1) {
+        const app = apps[index];
+
+        
+        if (newStatus === "Accepted" && app.status !== "Accepted") {
+            let scholarships = JSON.parse(localStorage.getItem("scholarships")) || [];
+            const schIndex = scholarships.findIndex(s => s.name === app.scholarshipName);
+
+            if (schIndex !== -1) {
+               
+                if (scholarships[schIndex].remainingSlots > 0) {
+                    scholarships[schIndex].remainingSlots -= 1;
+                    localStorage.setItem("scholarships", JSON.stringify(scholarships));
+                } else {
+                    alert("No slots available for this scholarship!");
+                    return; 
+                }
+            }
+        }
+
         apps[index].status = newStatus;
         apps[index].adminMessage = message;
-
+        
         localStorage.setItem("applications", JSON.stringify(apps));
         renderApplications();
     }
 };
 
-/* REJECT MODAL */
+
 window.openRejectModal = function (appId) {
     currentAppId = appId;
     rejectModal.style.display = "flex";
@@ -103,7 +122,7 @@ window.confirmReject = function () {
     }
 };
 
-/* FUND RELEASE (MINIMAL) */
+
 window.releaseFund = function (appId) {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const index = apps.findIndex(app => app.appId === appId);
@@ -116,7 +135,7 @@ window.releaseFund = function (appId) {
     }
 };
 
-/* INIT */
+
 document.addEventListener("DOMContentLoaded", () => {
     renderApplications();
 
