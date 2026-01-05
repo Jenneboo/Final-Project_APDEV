@@ -8,28 +8,48 @@ const renderApplicationHistory = () => {
     const currentUser = localStorage.getItem('currentUser'); 
     grid.innerHTML = "";
 
+    // Filter applications to only show those belonging to the current student
     const myApps = allApps.filter(app => app.username === currentUser);
 
     if (myApps.length === 0) {
-        grid.innerHTML = `<p class="no-data">No applications found.</p>`;
+        grid.innerHTML = `<p class="no-data" style="grid-column: 1/-1; text-align: center;">No applications found.</p>`;
         return;
     }
 
     myApps.forEach(app => {
         const card = document.createElement('div');
         card.className = "scholar-card";
+        
+        // Define the status display
+        const status = app.status || 'Pending';
+        const isRejected = status === 'Rejected';
+        
         card.innerHTML = `
             <h3>${app.scholarshipName}</h3>
-            <p class="app-message">Your application has been successfully submitted.</p>
-            <div class="status-badge status-${(app.status || 'pending').toLowerCase()}">
-                ${app.status || 'Pending'}
+            <p class="app-message">Application Date: ${app.appliedDate || 'N/A'}</p>
+            
+            <div class="status-badge status-${status.toLowerCase()}" 
+                 style="font-weight: bold; margin-bottom: 10px; color: ${isRejected ? '#b30000' : (status === 'Accepted' ? '#28a745' : '#f39c12')}">
+                ${status}
             </div>
+
+            ${isRejected ? `
+                <div class="rejection-box" style="background: #fff5f5; border-left: 4px solid #b30000; padding: 10px; margin-bottom: 15px; font-size: 0.9rem;">
+                    <strong>Reason for Rejection:</strong> ${app.adminMessage || "No additional information provided."}
+                </div>
+            ` : ""}
+
             <a href="viewApplication.html?appId=${app.appId}" class="view-link">View Full Application Form</a>
         `;
 
+        // Click logic for the card
         card.onclick = (e) => {
-            if (e.target.tagName !== 'A') window.location.href = `viewApplication.html?appId=${app.appId}`;
+            if (e.target.tagName !== 'A') {
+                localStorage.setItem("currentViewAppId", app.appId);
+                window.location.href = `viewApplication.html?appId=${app.appId}`;
+            }
         };
+        
         grid.appendChild(card);
     });
 };

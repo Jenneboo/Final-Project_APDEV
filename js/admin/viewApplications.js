@@ -15,95 +15,72 @@ function renderApplications() {
     }
 
     allApplications.forEach(app => {
-        if (app.status === "Pending" || app.status === "Accepted") {
-            const row = `
-                <tr>
-                    <td>${app.firstName} ${app.lastName}</td>
-                    <td>${app.scholarshipName}</td>
-                    <td>${app.appliedDate}</td>
-                    <td>
-                        <button class="btn-view"
-                            onclick="viewStudentForm(${app.appId})">
-                            View Form
-                        </button>
+        let actionContent = "";
 
-                        ${app.status === "Pending" ? `
-                            <button class="btn-accept"
-                                onclick="updateStatus(${app.appId}, 'Accepted')">
-                                Accept
-                            </button>
-                            <button class="btn-reject"
-                                onclick="openRejectModal(${app.appId})">
-                                Reject
-                            </button>
-                        ` : ""}
+        // 1. Always include the View Form button
+        const viewBtn = `
+            <button class="btn-view" onclick="viewStudentForm(${app.appId})">
+                View Form
+            </button>`;
 
-                        ${app.status === "Accepted" ? `
-                            <button class="btn-release"
-                                onclick="releaseFund(${app.appId})">
-                                Release Fund
-                            </button>
-                        ` : ""}
-                    </td>
-                </tr>
+        // 2. Determine what goes next to the View Form button
+        if (app.status === "Pending") {
+            actionContent = `
+                ${viewBtn}
+                <button class="btn-accept" onclick="updateStatus(${app.appId}, 'Accepted')">Accept</button>
+                <button class="btn-reject" onclick="openRejectModal(${app.appId})">Reject</button>
             `;
-            listContainer.insertAdjacentHTML("beforeend", row);
+        } else if (app.status === "Accepted") {
+            // FIXED: Now shows the green Accepted label next to View Form
+            actionContent = `
+                ${viewBtn}
+                <span style="color: #28a745; font-weight: bold; margin-left: 10px;">Accepted</span>
+            `;
+        } else if (app.status === "Rejected") {
+            // View Form stays, but show the word "Rejected" instead of buttons
+            actionContent = `
+                ${viewBtn}
+                <span style="color: #b30000; font-weight: bold; margin-left: 10px;">Rejected</span>
+            `;
         }
+
+        const row = `
+            <tr>
+                <td>${app.firstName} ${app.lastName}</td>
+                <td>${app.scholarshipName}</td>
+                <td>${app.appliedDate}</td>
+                <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        ${actionContent}
+                    </div>
+                </td>
+            </tr>
+        `;
+        listContainer.insertAdjacentHTML("beforeend", row);
     });
 }
 
-
+/* --- REDIRECT TO VIEW FORM --- */
 window.viewStudentForm = function (appId) {
-    const apps = JSON.parse(localStorage.getItem("applications")) || [];
-    const student = apps.find(a => a.appId === appId);
-
-    if (!student) return;
-
-    alert(`
-FULL NAME: ${student.firstName} ${student.middleName || ""} ${student.lastName}
-COURSE: ${student.course || "N/A"}
-YEAR LEVEL: ${student.yearLevel || "N/A"}
-GWA: ${student.gwa || "N/A"}
-SCHOOL: ${student.school || "N/A"}
-EMAIL: ${student.email || "N/A"}
-CONTACT: ${student.contact || "N/A"}
-    `);
+    localStorage.setItem("currentViewAppId", appId);
+    window.location.href = "viewForm.html";
 };
 
-
+/* UPDATE STATUS */
 window.updateStatus = function (appId, newStatus, message = "") {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const index = apps.findIndex(app => app.appId === appId);
 
     if (index !== -1) {
-        const app = apps[index];
-
-        
-        if (newStatus === "Accepted" && app.status !== "Accepted") {
-            let scholarships = JSON.parse(localStorage.getItem("scholarships")) || [];
-            const schIndex = scholarships.findIndex(s => s.name === app.scholarshipName);
-
-            if (schIndex !== -1) {
-               
-                if (scholarships[schIndex].remainingSlots > 0) {
-                    scholarships[schIndex].remainingSlots -= 1;
-                    localStorage.setItem("scholarships", JSON.stringify(scholarships));
-                } else {
-                    alert("No slots available for this scholarship!");
-                    return; 
-                }
-            }
-        }
-
         apps[index].status = newStatus;
         apps[index].adminMessage = message;
-        
+
         localStorage.setItem("applications", JSON.stringify(apps));
-        renderApplications();
+        renderApplications(); // This refreshes the table instantly
     }
 };
 
-
+/* REJECT MODAL LOGIC */
 window.openRejectModal = function (appId) {
     currentAppId = appId;
     rejectModal.style.display = "flex";
@@ -111,7 +88,8 @@ window.openRejectModal = function (appId) {
 
 window.closeModal = function () {
     rejectModal.style.display = "none";
-    document.getElementById("rejectReason").value = "";
+    const reasonInput = document.getElementById("rejectReason");
+    if(reasonInput) reasonInput.value = "";
 };
 
 window.confirmReject = function () {
@@ -122,29 +100,13 @@ window.confirmReject = function () {
     }
 };
 
-
-window.releaseFund = function (appId) {
-    const apps = JSON.parse(localStorage.getItem("applications")) || [];
-    const index = apps.findIndex(app => app.appId === appId);
-
-    if (index !== -1) {
-        apps[index].fundStatus = "Released";
-        localStorage.setItem("applications", JSON.stringify(apps));
-        alert("Fund released successfully");
-        renderApplications();
-    }
-};
-
-
+/* INIT & LOGOUT */
 document.addEventListener("DOMContentLoaded", () => {
     renderApplications();
 
-    document.getElementById("btnLogout")?.addEventListener("click", () => {
-        window.location.href = "../index.html";
-    });
-});
-const logoutBtn = document.getElementById('btnLogout');
+    const logoutBtn = document.getElementById('btnLogout');
     logoutBtn?.addEventListener('click', () => {
         localStorage.removeItem('currentUser');
         window.location.href = "../index.html";
     });
+});

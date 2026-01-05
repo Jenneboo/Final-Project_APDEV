@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Application Form | Admin</title>
+    <link rel="stylesheet" href="../../css/admin/viewForm.css">
+</head>
+<body>
+
+    <div class="admin-nav">
+        <a href="viewApplications.html" class="btn-back">← Back to List</a>
+        <button onclick="window.print()" class="btn-print">Print to PDF</button>
+    </div>
+
+    <div class="apply-wrapper">
+        <div class="apply-container">
+            <div id="statusIndicator" class="status-banner"></div>
+
+            <div class="apply-header">
+                <img src="../../image/Display.png" alt="Logo" style="height: 60px;">
+                <h1>APPLICATION SUMMARY</h1>
+                <h2 id="scholarshipTitle">---</h2>
+            </div>
+
+            <div class="section-label">I. Personal Details</div>
+            <div class="details-grid">
+                <div>
+                    <label>Full Name</label>
+                    <div id="viewFullName" class="data-box"></div>
+                </div>
+                <div>
+                    <label>Email Address</label>
+                    <div id="viewEmail" class="data-box"></div>
+                </div>
+                <div>
+                    <label>Contact Number</label>
+                    <div id="viewContact" class="data-box"></div>
+                </div>
+                <div>
+                    <label>Gender</label>
+                    <div id="viewGender" class="data-box"></div>
+                </div>
+            </div>
+
+            <div class="section-label">II. Educational Details</div>
+            <div class="details-grid">
+                <div style="grid-column: span 2;">
+                    <label>School/University</label>
+                    <div id="viewSchool" class="data-box"></div>
+                </div>
+                <div>
+                    <label>Course</label>
+                    <div id="viewCourse" class="data-box"></div>
+                </div>
+                <div>
+                    <label>Year Level</label>
+                    <div id="viewYear" class="data-box"></div>
+                </div>
+            </div>
+            
+            <div id="rejectionSection" style="display:none;">
+                <div class="section-label" style="color: #b30000;">III. Rejection Reason</div>
+                <div id="viewReason" class="data-box" style="border-color: #b30000; color: #b30000;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const appId = localStorage.getItem("currentViewAppId");
+            const applications = JSON.parse(localStorage.getItem("applications")) || [];
+            const data = applications.find(a => a.appId == appId);
+
+            if (data) {
+                // Fill scholarship and personal info
+                document.getElementById("scholarshipTitle").textContent = data.scholarshipName;
+                document.getElementById("viewFullName").textContent = `${data.firstName} ${data.lastName}`;
+                document.getElementById("viewEmail").textContent = data.email || "N/A";
+                document.getElementById("viewContact").textContent = data.contact || "N/A";
+                document.getElementById("viewGender").textContent = data.gender || "N/A";
+                document.getElementById("viewSchool").textContent = data.school || "N/A";
+                document.getElementById("viewCourse").textContent = data.course || "N/A";
+                document.getElementById("viewYear").textContent = data.yearLevel || "N/A";
+
+                // Handle the Status Indicator
+                const statusBox = document.getElementById("statusIndicator");
+                statusBox.textContent = "Status: " + data.status;
+                
+                if(data.status === "Accepted") {
+                    statusBox.style.color = "#28a745";
+                } else if (data.status === "Rejected") {
+                    statusBox.style.color = "#b30000";
+                    // Show the reason section if it was rejected
+                    document.getElementById("rejectionSection").style.display = "block";
+                    document.getElementById("viewReason").textContent = data.adminMessage || "No reason provided.";
+                } else {
+                    statusBox.style.color = "#f39c12"; // Pending
+                }
+            }
+        });
+    </script>
+</body>
+</html>
