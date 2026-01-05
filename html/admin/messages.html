@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Portal | Eskuelar</title>
         <link rel="stylesheet" href="../../css/admin/admin.css">
+        <link rel="stylesheet" href="../../css/admin/messages.css">
     </head>
     <body>
 
@@ -12,7 +13,10 @@
             <div class="header-container">
                 <img src="../../image/Display.png" alt="Logo" class="logo">
                 <h1 class="header-title">Eskuelar Admin Portal</h1>
+                <div class="header-actions">
+                    <button class="nav-item" onclick="location.href='admin.html'">Back</button>
                 <button id="btnLogout" class="btn-logout">Logout</button>
+                </div>
             </div>
         </header>
 
@@ -23,6 +27,44 @@
             <button class="nav-item" onclick="location.href='fundrelease.html'">Fund Release</button>
             <button class="nav-item active">Messages</button>
         </nav>
+
+        <main class="messages-area">
+        <aside class="student-list-panel">
+            <div class="student-list-header">
+                <h3>Students</h3>
+                <button id="btnNewMessage" class="btn-add">New Message</button>
+            </div>
+            <ul id="studentList" class="student-list"></ul>
+            <div id="noMessages" class="no-messages">No messages yet.</div>
+        </aside>
+
+        <section class="conversation-panel">
+            <div class="conversation-header" id="conversationHeader">Select a student</div>
+            <div class="conversation-body" id="conversationBody"></div>
+            <div class="conversation-footer" id="conversationFooter" style="display:none">
+                <textarea id="replyInput" placeholder="Enter the message here..."></textarea>
+                <div class="footer-actions">
+                    <button id="sendReplyBtn" class="btn-add">Send</button>
+                    <button id="deleteConvBtn" class="btn-remove">Delete Conversation</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="newMessageModal" class="modal-overlay">
+        <div class="modal-content message-modal">
+            <h3>New Message</h3>
+            <label>To:</label>
+            <input id="toInput" list="studentsDatalist" placeholder="Recipient name">
+            <datalist id="studentsDatalist"></datalist>
+            <label>Message:</label>
+            <textarea id="messageInput" placeholder="Enter the message here..."></textarea>
+            <div class="modal-actions">
+                <button id="sendMessageBtn" class="btn-confirm">Send</button>
+                <button id="closeModalBtn" class="btn-cancel-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 
         <script src="../../js/admin/messages.js"></script>
     </body>
