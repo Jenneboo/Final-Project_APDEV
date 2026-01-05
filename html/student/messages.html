@@ -14,10 +14,7 @@
             <div class="header-container">
                 <img src="../../image/Display.png" alt="Eskuelar Logo" class="logo">
                 <h1 class="header-title">Eskuelar Student Portal</h1>
-                <div class="header-actions">
-                    <button class="nav-item" onclick="location.href='admin.html'">Back</button>
                 <button id="btnLogout" class="btn-logout">Logout</button>
-                </div>
             </div>
         </header>
 
@@ -29,13 +26,11 @@
             <button class="nav-btn" onclick="location.href='release.html'">Release</button>
             <button class="nav-btn active">Messages</button>
         </nav>
-    </body>
-
-    <main class="messages-area">
+        <main class="messages-area">
         <aside class="student-list-panel">
             <div class="student-list-header">
                 <h3>Students</h3>
-                <button id="btnNewMessage" class="btn-add">New Message</button>
+                <!--<button id="btnNewMessage" class="btn-add">New Message</button>-->
             </div>
             <ul id="studentList" class="student-list"></ul>
             <div id="noMessages" class="no-messages">No messages yet.</div>
@@ -70,4 +65,5 @@
     </div>
 
     <script src="../../js/student/messages.js"></script>
-<html>
+    </body>
+</html>

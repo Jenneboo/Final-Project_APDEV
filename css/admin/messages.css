@@ -37,7 +37,11 @@
     border:1px solid transparent; 
 }
 
-.student-item { display:flex; justify-content:space-between; align-items:center; }
+.student-item { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+}
 
 .unread-badge {
     background:#b30000;
