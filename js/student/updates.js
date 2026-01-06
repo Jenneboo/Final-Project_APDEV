@@ -63,3 +63,9 @@ window.viewHistoryForm = function(appId) {
 };
 
 document.addEventListener('DOMContentLoaded', renderStatusUpdates);
+
+const logoutBtn = document.getElementById('btnLogout');
+    logoutBtn?.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        window.location.href = "../index.html";
+    });
