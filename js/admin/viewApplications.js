@@ -17,13 +17,13 @@ function renderApplications() {
     allApplications.forEach(app => {
         let actionContent = "";
 
-        // 1. Always include the View Form button
+     
         const viewBtn = `
             <button class="btn-view" onclick="viewStudentForm(${app.appId})">
                 View Form
             </button>`;
 
-        // 2. Determine what goes next to the View Form button
+    
         if (app.status === "Pending") {
             actionContent = `
                 ${viewBtn}
@@ -31,13 +31,13 @@ function renderApplications() {
                 <button class="btn-reject" onclick="openRejectModal(${app.appId})">Reject</button>
             `;
         } else if (app.status === "Accepted") {
-            // FIXED: Now shows the green Accepted label next to View Form
+            
             actionContent = `
                 ${viewBtn}
                 <span style="color: #28a745; font-weight: bold; margin-left: 10px;">Accepted</span>
             `;
         } else if (app.status === "Rejected") {
-            // View Form stays, but show the word "Rejected" instead of buttons
+           
             actionContent = `
                 ${viewBtn}
                 <span style="color: #b30000; font-weight: bold; margin-left: 10px;">Rejected</span>
@@ -60,13 +60,13 @@ function renderApplications() {
     });
 }
 
-/* --- REDIRECT TO VIEW FORM --- */
+
 window.viewStudentForm = function (appId) {
     localStorage.setItem("currentViewAppId", appId);
     window.location.href = "viewForm.html";
 };
 
-/* UPDATE STATUS */
+
 window.updateStatus = function (appId, newStatus, message = "") {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const index = apps.findIndex(app => app.appId === appId);
@@ -76,11 +76,11 @@ window.updateStatus = function (appId, newStatus, message = "") {
         apps[index].adminMessage = message;
 
         localStorage.setItem("applications", JSON.stringify(apps));
-        renderApplications(); // This refreshes the table instantly
+        renderApplications(); 
     }
 };
 
-/* REJECT MODAL LOGIC */
+
 window.openRejectModal = function (appId) {
     currentAppId = appId;
     rejectModal.style.display = "flex";
@@ -100,7 +100,7 @@ window.confirmReject = function () {
     }
 };
 
-/* INIT & LOGOUT */
+
 document.addEventListener("DOMContentLoaded", () => {
     renderApplications();
 

@@ -8,7 +8,7 @@ function renderFundReleaseList() {
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     listContainer.innerHTML = "";
 
-    // Filter: Only students who are Accepted AND haven't received their funds yet
+  
     const accepted = apps.filter(app =>
         app.status === "Accepted" && app.fundStatus !== "Released"
     );
@@ -42,7 +42,7 @@ function renderFundReleaseList() {
     });
 }
 
-/* FIX: Instead of alert, redirect to our new viewForm.html */
+
 window.viewDetails = function (id) {
     localStorage.setItem("currentViewAppId", id);
     window.location.href = "viewForm.html";
@@ -61,27 +61,44 @@ window.closeReleaseModal = function () {
 
 window.confirmRelease = function () {
     const noteInput = document.getElementById("releaseNote");
-    const note = noteInput ? noteInput.value : "";
+   
+    const amountInput = document.getElementById("releaseAmount"); 
+    
+    const note = noteInput ? noteInput.value.trim() : "";
+    const amount = (amountInput && amountInput.value) ? amountInput.value : "10,000"; 
     
     const apps = JSON.parse(localStorage.getItem("applications")) || [];
     const index = apps.findIndex(a => a.appId === currentAppId);
 
     if (index !== -1) {
-        // Update the data
+      
         apps[index].fundStatus = "Released";
-        apps[index].releasedDate = new Date().toLocaleDateString();
-        apps[index].releaseNote = note;
+        
+       
+        apps[index].releasedDate = new Date().toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        apps[index].releaseNote = note || "Your scholarship fund has been processed.";
+        apps[index].fundAmount = amount; 
 
-        // Save back to localStorage
+     
+        console.log("Releasing for user:", apps[index].username);
+
+       
         localStorage.setItem("applications", JSON.stringify(apps));
 
-        alert("Funds successfully released for " + apps[index].firstName);
+        alert(`Funds successfully released for ${apps[index].firstName}!`);
+        
         closeReleaseModal();
-        renderFundReleaseList(); // Refresh the table
+        renderFundReleaseList(); 
+    } else {
+        alert("Error: Application not found.");
     }
 };
 
-/* INIT & LOGOUT */
+
 document.addEventListener("DOMContentLoaded", () => {
     renderFundReleaseList();
 

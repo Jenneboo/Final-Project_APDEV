@@ -1,9 +1,7 @@
-/* viewForm.css - Admin side specific styles */
 
-/* Import the student layout to ensure a 100% match */
 @import url("../student/viewApplication.css");
 
-/* 1. Admin Top Navigation */
+
 .admin-nav {
     max-width: 850px;
     margin: 20px auto;
@@ -27,7 +25,7 @@
     background: #333;
 }
 
-/* 2. Data Display (Matching the Student Input Look) */
+
 .data-box {
     background: #fff;
     border: 1px solid #ccc;
@@ -52,7 +50,7 @@
     color: #555;
 }
 
-/* 3. Print Handling */
+
 @media print {
     .admin-nav { 
         display: none !important; 

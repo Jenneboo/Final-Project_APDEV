@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (addressEl) addressEl.textContent = data.address || "No Address Set";
     };
 
-    //Edit and Cancel Button
+
     const editBtn = document.getElementById('btnEditProfile');
     const profileForm = document.getElementById('profileForm');
     const profileDisplay = document.getElementById('profileDisplay');

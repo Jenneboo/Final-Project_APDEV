@@ -8,7 +8,7 @@ const renderApplicationHistory = () => {
     const currentUser = localStorage.getItem('currentUser'); 
     grid.innerHTML = "";
 
-    // FILTER: Only show applications that are "Pending" for this user
+    
     const pendingApps = allApps.filter(app => 
         app.username === currentUser && (!app.status || app.status === 'Pending')
     );
@@ -33,7 +33,7 @@ const renderApplicationHistory = () => {
             <a href="viewApplication.html?appId=${app.appId}" class="view-link">View Submitted Form</a>
         `;
 
-        // Save ID to localStorage when clicking the card for the view page
+        
         card.onclick = (e) => {
             if (e.target.tagName !== 'A') {
                 localStorage.setItem("currentViewAppId", app.appId);

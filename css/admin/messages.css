@@ -4,15 +4,15 @@
     max-width: 1000px;
     margin: 30px auto; 
     padding: 0 20px; 
-    align-items: flex-start; /* keep panels from stretching to match heights */
+    align-items: flex-start; 
 }
 
 .student-list-panel { 
     width: 280px; 
-    flex: 0 0 280px; /* fixed width */
-    align-self: flex-start; /* don't stretch vertically */
-    max-height: 600px; /* fixed max height so it doesn't expand when conversation grows */
-    overflow: auto; /* scroll student list independently */
+    flex: 0 0 280px; 
+    align-self: flex-start; 
+    max-height: 600px; 
+    overflow: auto; 
     background: #fff; 
     border: 2px solid #b30000; 
     border-radius: 8px; 
@@ -155,7 +155,7 @@
     padding:8px 14px; 
 }
 
-/* Modal tweaks for message box */
+
 .message-modal { 
     max-width:1000px; 
     display:flex; 

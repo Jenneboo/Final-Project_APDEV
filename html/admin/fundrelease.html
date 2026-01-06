@@ -50,7 +50,13 @@
 
         <p>Confirm fund release?</p>
 
-        <textarea id="releaseNote" placeholder="Optional note"></textarea>
+        <div style="margin-bottom: 15px; text-align: left;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Amount to Release (₱):</label>
+            <input type="number" id="releaseAmount" value="10000" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
+
+        <label style="display: block; margin-bottom: 5px; font-weight: bold; text-align: left;">Admin Note:</label>
+        <textarea id="releaseNote" placeholder="Optional note for the student..."></textarea>
 
         <div class="modal-actions">
             <button class="btn-confirm" onclick="confirmRelease()">Confirm</button>
@@ -58,7 +64,6 @@
         </div>
     </div>
 </div>
-
 <script src="../../js/admin/fundRelease.js"></script>
 </body>
 </html>

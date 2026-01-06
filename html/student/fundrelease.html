@@ -1,65 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Eskuelar Student Portal</title>
-        <link rel="stylesheet" href="../../css/student/student.css">
-        <link rel="stylesheet" href="../../css/admin/admin.css">
-        <link rel="stylesheet" href="../../css/student/fundrelease.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eskuelar Student Portal - Fund Release</title>
+    <link rel="stylesheet" href="../../css/student/student.css">
+    <link rel="stylesheet" href="../../css/admin/admin.css">
+    <link rel="stylesheet" href="../../css/student/fundrelease.css">
+</head>
+<body>
 
-    </head>
-    <body>
+    <header class="main-header">
+        <div class="header-container">
+            <img src="../../image/Display.png" alt="Eskuelar Logo" class="logo">
+            <h1 class="header-title">Eskuelar Student Portal</h1>
+            <button id="btnLogout" class="btn-logout">Logout</button>
+        </div>
+    </header>
 
-        <header class="main-header">
-            <div class="header-container">
-                <img src="../../image/Display.png" alt="Eskuelar Logo" class="logo">
-                <h1 class="header-title">Eskuelar Student Portal</h1>
-                <button id="btnLogout" class="btn-logout">Logout</button>
-            </div>
-        </header>
-
-        <nav class="sub-nav">
-            <button class="nav-btn" onclick="location.href='dashboard.html'">Dashboard</button>
-            <button class="nav-btn" onclick="location.href='student.html'">Scholarships</button>
-            <button class="nav-btn" onclick="location.href='applications.html'">Applications</button>
-            <button class="nav-btn" onclick="location.href='updates.html'">Updates</button>
-            <button class="nav-btn active">Release</button>
-            <button class="nav-btn" onclick="location.href='messages.html'">Messages</button>
-        </nav>
-    </body>
+    <nav class="sub-nav">
+        <button class="nav-btn" onclick="location.href='dashboard.html'">Dashboard</button>
+        <button class="nav-btn" onclick="location.href='student.html'">Scholarships</button>
+        <button class="nav-btn" onclick="location.href='applications.html'">Applications</button>
+        <button class="nav-btn" onclick="location.href='updates.html'">Updates</button>
+        <button class="nav-btn active">Release</button>
+        <button class="nav-btn" onclick="location.href='messages.html'">Messages</button>
+    </nav>
 
     <header class="header-title-display">
         <h1>Fund Release Announcements</h1>
         <p>For Qualified Students</p>
     </header>
 
-    <div class="container">
-
-        <div class="announcement">
-            <span class="badge">Qualified</span>
-            <h3>Scholarship Fund Release</h3>
-
-            <p class="details">
-                Congratulations! You have been <strong>qualified by the administrator</strong>
-                to receive your scholarship fund.
-            </p>
-
-            <p class="details">
-                <strong>Scholarship Type:</strong> Academic Scholarship <br>
-                <strong>Amount:</strong> <span class="amount">₱10,000</span>
-            </p>
-
-            <p class="details">
-                Please visit the <strong>Accounting Office</strong> and bring a valid ID
-                to claim your fund.
-            </p>
-
-            <p class="date">
-                Announcement Date: January 4, 2026
-            </p>
-        </div>
-
+    <div class="container" id="scholarshipGrid">
         <div class="no-announcement">
             <h3>No Fund Release Announcement</h3>
             <p>
@@ -67,8 +40,8 @@
                 Please wait for the administrator’s evaluation.
             </p>
         </div>
-
     </div>
     
     <script src="../../js/student/release.js"></script>
-<html>
+</body>
+</html>

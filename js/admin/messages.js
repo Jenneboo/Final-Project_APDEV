@@ -11,7 +11,7 @@ if (!currentUser) {
 const getMessages = () => JSON.parse(localStorage.getItem(MESSAGES_KEY)) || [];
 const saveMessages = (arr) => localStorage.setItem(MESSAGES_KEY, JSON.stringify(arr));
 
-// check whether a username is registered in the system
+
 const isRegistered = (name) => {
     if (!name) return false;
     if (name === 'admin') return true;
@@ -33,7 +33,7 @@ const renderConvList = () => {
     const messages = getMessages();
     const partners = new Set();
     messages.forEach(m => {
-        if (!isVisible(m, currentUser)) return; // skip messages hidden for this user
+        if (!isVisible(m, currentUser)) return;
         if (m.from === currentUser && m.to !== currentUser) partners.add(m.to);
         if (m.to === currentUser && m.from !== currentUser) partners.add(m.from);
     });
@@ -47,7 +47,7 @@ const renderConvList = () => {
         const spanName = document.createElement('span');
         spanName.textContent = name;
         li.appendChild(spanName);
-        // unread count for messages from this partner to currentUser
+        
         const unread = getMessages().filter(m => isVisible(m, currentUser) && m.from === name && m.to === currentUser && !m.read).length;
         if (unread > 0) {
             const badge = document.createElement('span');

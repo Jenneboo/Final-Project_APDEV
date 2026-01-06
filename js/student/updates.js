@@ -48,17 +48,17 @@ function renderStatusUpdates() {
     `).join('');
 }
 
-// FIXED: Now sends appId through the URL and LocalStorage
+
 window.viewHistoryForm = function(appId) {
     if (!appId || appId === "undefined") {
         console.error("Error: appId is missing");
         return;
     }
     
-    // 1. Save to localStorage (as a backup)
+  
     localStorage.setItem("currentViewAppId", appId);
     
-    // 2. Redirect with URL Parameter (This usually fixes the "No reference found" error)
+   
     window.location.href = `viewApplication.html?appId=${appId}`;
 };
 

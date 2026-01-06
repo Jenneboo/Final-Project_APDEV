@@ -57,7 +57,7 @@ body { background-color: #f4f4f4; padding: 40px 20px; }
 
 .btn-cancel { background: #fff; color: #555; border: 1px solid #ccc; padding: 15px 40px; border-radius: 5px; cursor: pointer; }
 
-/* Custom Success Modal Styling */
+
 .modal-overlay {
     display: none;
     position: fixed;

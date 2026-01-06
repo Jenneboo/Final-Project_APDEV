@@ -3,7 +3,7 @@
 const loadScholarshipDetails = () => {
     const params = new URLSearchParams(window.location.search);
     const scholarshipId = params.get('id');
-    const currentUser = localStorage.getItem('currentUser'); //For specific user ja 
+    const currentUser = localStorage.getItem('currentUser'); 
     const applyBtn = document.getElementById('applyBtn');
     
     if (!scholarshipId) return;

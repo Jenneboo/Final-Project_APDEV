@@ -1,4 +1,4 @@
-/* Document Layout */
+
 .document-wrapper {
     background-color: #f4f6f9;
     padding: 40px 0;
@@ -10,23 +10,23 @@
     width: 95%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 50px 60px; /* Adjusted for better mobile/tablet view */
+    padding: 50px 60px; 
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     font-family: 'Times New Roman', Times, serif;
 }
 
-/* Update Card (The Box) */
+
 .update-entry {
     margin-top: 30px;
     border: 1px solid #ddd;
-    border-radius: 8px; /* Slightly rounder for modern look */
+    border-radius: 8px; 
     background-color: #fff;
     position: relative;
-    padding: 25px; /* Adds the "room" you asked for */
-    font-family: Arial, sans-serif; /* Keep body text readable */
+    padding: 25px; 
+    font-family: Arial, sans-serif; 
 }
 
-/* Title & Status Pill Logic */
+
 .update-title {
     font-size: 1.5rem;
     color: #333;
@@ -36,14 +36,14 @@
     align-items: flex-start;
 }
 
-/* Status Badge - Fixed to be the Pill style in top right */
+
 .status-badge {
     font-size: 12px;
     padding: 6px 16px;
     border-radius: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    border: 1px solid currentColor; /* Matches the text color */
+    border: 1px solid currentColor; 
 }
 
 .status-accepted { 
@@ -56,7 +56,7 @@
     background-color: #fff5f5; 
 }
 
-/* Body Spacing */
+
 .update-body {
     padding: 10px 0;
     line-height: 1.6;
@@ -69,11 +69,11 @@
     margin-top: 10px;
 }
 
-/* Your Requested Red Button */
+
 .btn-view-submission {
     display: inline-block;
     margin-top: 20px;
-    background-color: #c0392b; /* The specific red you asked for */
+    background-color: #c0392b;
     color: white !important;
     border: none;
     padding: 12px 25px;
@@ -90,7 +90,7 @@
     transform: translateY(-1px);
 }
 
-/* Header/Letterhead Styles (Keeping your original) */
+
 .doc-logo { height: 80px; width: auto; }
 .doc-line { border: 0; border-top: 2px solid #333; margin: 20px 0; }
 .doc-actions { margin-top: 50px; text-align: center; }

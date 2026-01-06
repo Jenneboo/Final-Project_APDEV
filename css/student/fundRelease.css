@@ -1,7 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif; 
     background: #f4f6f9;
     margin: 0;
+    color: #333;
 }
 
 .header-title-display {
@@ -10,10 +11,7 @@ body {
     padding: 25px;
     text-align: center;
     border-radius: 0 0 15px 15px;
-    -webkit-border-radius: 0 0 15px 15px;
-    -moz-border-radius: 0 0 15px 15px;
-    -ms-border-radius: 0 0 15px 15px;
-    -o-border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .container {
@@ -22,13 +20,19 @@ body {
     padding: 0 20px;
 }
 
+
 .announcement {
     background: #ffffff;
-    padding: 25px;
+    padding: 30px;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     border: 1px solid #eee;
     margin-bottom: 25px;
+    transition: transform 0.2s ease;
+}
+
+.announcement:hover {
+    transform: translateY(-3px); 
 }
 
 .announcement h3 {
@@ -48,31 +52,52 @@ body {
     background: #27ae60;
     color: white;
     margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .announcement p {
     font-size: 15px;
     color: #4a5568;
     line-height: 1.6;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .amount {
     font-weight: bold;
     color: #27ae60;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .date {
     font-size: 0.85rem;
     color: #7f8c8d;
-    margin-top: 15px;
+    margin-top: 20px;
     font-style: italic;
+    border-top: 1px dashed #ddd;
+    padding-top: 10px;
+}
+
+
+.btn-view {
+    background: #7a0007;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn-view:hover {
+    background: #a30009;
 }
 
 .no-announcement {
     background: #ffffff;
-    padding: 40px;
+    padding: 60px 40px;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.05);
     border: 1px solid #eee;
@@ -80,7 +105,27 @@ body {
     color: #7f8c8d;
 }
 
-.no-announcement h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
+
+@media print {
+  
+    body { background: white; }
+    .header-title-display, 
+    #btnLogout, 
+    .btn-view, 
+    nav, 
+    .sidebar { 
+        display: none !important; 
+    }
+    
+    .container { 
+        margin: 0; 
+        padding: 0; 
+        max-width: 100%; 
+    }
+    
+    .announcement {
+        box-shadow: none;
+        border: 2px solid #27ae60;
+        margin: 0;
+    }
 }

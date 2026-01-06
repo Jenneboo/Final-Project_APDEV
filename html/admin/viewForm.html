@@ -72,7 +72,7 @@
             const data = applications.find(a => a.appId == appId);
 
             if (data) {
-                // Fill scholarship and personal info
+          
                 document.getElementById("scholarshipTitle").textContent = data.scholarshipName;
                 document.getElementById("viewFullName").textContent = `${data.firstName} ${data.lastName}`;
                 document.getElementById("viewEmail").textContent = data.email || "N/A";
@@ -82,7 +82,7 @@
                 document.getElementById("viewCourse").textContent = data.course || "N/A";
                 document.getElementById("viewYear").textContent = data.yearLevel || "N/A";
 
-                // Handle the Status Indicator
+            
                 const statusBox = document.getElementById("statusIndicator");
                 statusBox.textContent = "Status: " + data.status;
                 
@@ -90,11 +90,11 @@
                     statusBox.style.color = "#28a745";
                 } else if (data.status === "Rejected") {
                     statusBox.style.color = "#b30000";
-                    // Show the reason section if it was rejected
+                  
                     document.getElementById("rejectionSection").style.display = "block";
                     document.getElementById("viewReason").textContent = data.adminMessage || "No reason provided.";
                 } else {
-                    statusBox.style.color = "#f39c12"; // Pending
+                    statusBox.style.color = "#f39c12"; 
                 }
             }
         });

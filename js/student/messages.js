@@ -81,7 +81,7 @@ const openConversation = (partner) => {
         msgEl.textContent = m.text;
         body.appendChild(msgEl);
     });
-    // mark inbound messages as read for this conversation
+   
     const all = getMessages();
     let changed = false;
     all.forEach(m => {

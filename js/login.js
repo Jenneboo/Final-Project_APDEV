@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             localStorage.setItem(`profile_${user}`, JSON.stringify(profileData));
 
-            // add a welcome message from admin for the newly registered student
+           
             const MESSAGES_KEY = 'messages';
             const msgs = JSON.parse(localStorage.getItem(MESSAGES_KEY)) || [];
             msgs.push({ id: Date.now(), from: 'admin', to: user, text: 'Welcome! Your account has been created. If you need help, reply to this message.', ts: Date.now(), read: false, hiddenFor: [] });
